@@ -10,7 +10,11 @@ class Actor extends Model
     protected $primaryKey = 'actor_id'; // Clave primaria
     public $timestamps = false; // defino si la tabla tiene timestamps
 
-    protected $fillable = ['first_name', 'last_name', 'last_update']; // Defino los campos que puedo modificar
+    public function films()
+{
+    return $this->belongsToMany(Film::class, 'film_actor', 'actor_id', 'film_id');
+}
+
     
 }
 
